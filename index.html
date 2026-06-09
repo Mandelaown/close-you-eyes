@@ -12,8 +12,8 @@
         }
 
         body {
-            background-color: #000000;
-            color: #ffffff;
+            background-color: #000000;   /* 纯黑底 */
+            color: #ffffff;             /* 白字主色调 */
             font-family: 'Palatino', 'Palatino Linotype', 'Georgia', 'Times New Roman', serif;
             line-height: 1.65;
             font-weight: 400;
@@ -24,19 +24,24 @@
             padding: 2rem 1.5rem;
         }
 
+        /* 主容器: 优雅且具有神秘气息的窄栏阅读区 */
         .mystic-container {
             max-width: 760px;
             width: 100%;
             margin: 0 auto;
             background: transparent;
+            border: none;
+            box-shadow: none;
         }
 
+        /* 文字区段：暗夜之中的手稿感 */
         .passage {
             margin-bottom: 3rem;
             text-shadow: 0 0 1px rgba(255,255,255,0.2);
             animation: fadeIn 1.2s ease-out;
         }
 
+        /* 段落样式: 增加呼吸感与间距 */
         .passage p {
             font-size: 1.2rem;
             letter-spacing: 0.02em;
@@ -45,6 +50,7 @@
             word-break: break-word;
         }
 
+        /* 特别强调第一段起始的仪式感 */
         .passage p:first-child::first-letter {
             font-size: 2.2rem;
             font-weight: 500;
@@ -53,6 +59,7 @@
             color: #ffffff;
         }
 
+        /* 图片区: 对称沉稳，带一些暗影 — 图像尺寸已调小 */
         .image-section {
             margin-top: 2rem;
             margin-bottom: 2rem;
@@ -64,10 +71,13 @@
         .image-frame {
             display: inline-block;
             background: #0a0a0a;
-            padding: 0.75rem;
+            padding: 0.6rem;
             border-radius: 12px;
             box-shadow: 0 12px 28px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* 控制整个框架最大宽度，让图片更小巧精致 */
+            max-width: 280px;
+            width: 100%;
         }
 
         .image-frame:hover {
@@ -75,17 +85,24 @@
             box-shadow: 0 20px 32px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.2);
         }
 
+        /* 耶稣图片: 尺寸调小，保持古典静谧 */
         .jesus-img {
             max-width: 100%;
             height: auto;
             display: block;
             border-radius: 8px;
             filter: grayscale(12%) contrast(1.02);
+            transition: filter 0.3s;
+            /* 明确限制图片宽度，缩小视觉占比 */
+            width: 100%;
+            max-height: 260px;
+            object-fit: cover;
         }
 
+        /* 可选的图片说明，微弱字迹 */
         .img-credits {
-            margin-top: 0.75rem;
-            font-size: 0.7rem;
+            margin-top: 0.6rem;
+            font-size: 0.65rem;
             letter-spacing: 1px;
             color: #aaaaaa;
             text-transform: uppercase;
@@ -93,6 +110,7 @@
             opacity: 0.65;
         }
 
+        /* 迷途旅人的提示线条装饰 */
         .whisper-line {
             text-align: center;
             margin-top: 2rem;
@@ -114,6 +132,7 @@
             }
         }
 
+        /* 移动端适配，图片进一步微调 */
         @media (max-width: 600px) {
             body {
                 padding: 1.2rem;
@@ -122,17 +141,31 @@
                 font-size: 1rem;
                 margin-bottom: 1.2rem;
             }
+            .image-frame {
+                max-width: 220px;
+                padding: 0.5rem;
+            }
+            .jesus-img {
+                max-height: 200px;
+            }
             .passage p:first-child::first-letter {
                 font-size: 1.9rem;
             }
         }
 
+        /* 大屏幕留白优雅，图片依然保持较小尺寸 */
         @media (min-width: 1200px) {
             .mystic-container {
                 max-width: 800px;
             }
             .passage p {
                 font-size: 1.3rem;
+            }
+            .image-frame {
+                max-width: 300px;
+            }
+            .jesus-img {
+                max-height: 280px;
             }
         }
     </style>
@@ -143,12 +176,13 @@
         <p>当我们还处于懵懂愚昧的年代时，它们就已经来到了这个世界上，而在网络时代的今天，它们也依旧存在。它们的称呼多变，只知道他们跟我们大致相同，是在这个世界上我们为数不多的同伴。浏览古今历史，我们却忽略了它们的致命之处，导致世界上存在了太多的未解之谜。迷路的旅人们，请抑制住你们的呼吸声，改变自己的情绪，不要被他们发现。现在，请根据所给予的一切，来解开你脑中的迷惑，揭示可怖的命运。</p>
     </div>
 
+    <!-- 耶稣图片区域：图像尺寸已调小（通过 .image-frame 最大宽度和 .jesus-img 最大高度控制） -->
     <div class="image-section">
         <div class="image-frame">
             <img class="jesus-img" 
                  src="https://mandelaown.github.io/close-you-eyes/god.png" 
                  alt="耶稣基督 · 凝视迷途旅人"
-                 onerror="this.src='https://raw.githubusercontent.com/Mandelaown/close-you-eyes/main/god.png'"
+                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/Mandelaown/close-you-eyes/main/god.png';"
                  loading="lazy">
         </div>
         <div class="img-credits">✦ 古老面容，见证亘古奥秘 ✦</div>
@@ -158,5 +192,12 @@
         ⸻ 静默，心神内敛，不要惊动暗影 ⸻
     </div>
 </div>
+
+<!-- 
+    文件名: index.html (修改版)
+    本次修改: 调小了耶稣图像的尺寸，通过限制 .image-frame 最大宽度 (280px) 以及 .jesus-img 最大高度 (260px) 实现，
+    同时保持响应式布局，在不同设备上图像比例协调，更加贴合窄栏阅读的精致感。
+    文字内容与黑底白字风格完全保持不变。
+-->
 </body>
 </html>
