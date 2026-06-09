@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>创世纪 · 造物深渊</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;   /* 无底黑暗 */
+            color: #ececec;             /* 正常文本为浅灰白 */
+            font-family: 'Palatino', 'Palatino Linotype', 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            font-weight: 400;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2.5rem 1.5rem 4rem 1.5rem;
+        }
+
+        /* 主容器 — 宽度偏窄，增强阅读的孤独感与深渊感 */
+        .dread-void {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            background: transparent;
+        }
+
+        /* ========= 正常经文区域（庄严完整叙事） ========= */
+        .sacred-narrative {
+            margin-bottom: 4rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .sacred-narrative p {
+            font-size: 1.18rem;
+            letter-spacing: 0.02em;
+            margin-bottom: 1.6rem;
+            text-align: justify;
+            color: #f1f1f1;
+            text-shadow: 0 0 1px rgba(255,255,240,0.2);
+        }
+
+        /* 省略号区域 — 暗示断裂、深渊、未知 */
+        .ellipsis-abyss {
+            text-align: center;
+            margin: 2.5rem 0 3rem 0;
+            font-size: 2.4rem;
+            letter-spacing: 12px;
+            color: #8b3c3c;
+            font-weight: 500;
+            animation: blinkDots 1.5s step-start infinite;
+            opacity: 0.7;
+        }
+
+        .ellipsis-abyss.small {
+            font-size: 1.6rem;
+            letter-spacing: 8px;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* ========= 关键： 巨大留白区，让读者下滑时感到悬空与不安 ========= */
+        .dread-gap {
+            height: 28vh;           /* 第一个视觉断层，制造落差恐惧 */
+            min-height: 180px;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid rgba(120, 30, 30, 0.3);
+            border-bottom: 1px solid rgba(120, 30, 30, 0.2);
+            margin: 1rem 0 2rem 0;
+        }
+
+        .gap-whisper {
+            font-size: 0.7rem;
+            color: #4f2a2a;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: monospace;
+            opacity: 0.45;
+            transition: opacity 0.2s;
+        }
+
+        .gap-whisper:hover {
+            opacity: 0.7;
+        }
+
+        .second-gap {
+            height: 35vh;
+            min-height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0 2rem 0;
+            border-top: 1px dashed rgba(180, 40, 40, 0.4);
+            border-bottom: none;
+            background: radial-gradient(ellipse at center, rgba(30,0,0,0.2) 0%, rgba(0,0,0,0) 80%);
+        }
+
+        /* ========= 红色恐怖咒语区域 — 大量“人是上帝创造的”让人头皮发麻 ========= */
+        .terror-realm {
+            margin: 1.5rem 0 2.8rem 0;
+            padding: 2rem 0.8rem;
+            border-top: 3px solid #b3001b;
+            border-bottom: 3px solid #b3001b;
+            background: rgba(20, 0, 0, 0.65);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.25), inset 0 0 25px rgba(100, 0, 0, 0.4);
+            transition: all 0.3s;
+        }
+
+        .red-horror {
+            color: #ff2a2a;
+            font-size: 1.35rem;
+            font-weight: 800;
+            line-height: 1.5;
+            text-align: center;
+            word-break: break-word;
+            font-family: 'Courier New', 'Impact', 'monospace';
+            text-shadow: 0 0 5px #ff0000, 0 0 10px #8b0000;
+            animation: pulseRed 1.6s infinite ease-in-out;
+        }
+
+        .horror-flood {
+            max-height: none;
+            overflow-y: visible;
+        }
+
+        /* 图片区域: 耶稣凝视造物，神圣但又令人战栗 */
+        .image-section {
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(200, 60, 60, 0.4);
+            padding-top: 2.8rem;
+        }
+
+        .image-frame {
+            display: inline-block;
+            background: #080101;
+            padding: 0.7rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(180, 30, 30, 0.6);
+            transition: 0.2s;
+        }
+
+        .image-frame:hover {
+            box-shadow: 0 0 24px rgba(255, 30, 30, 0.5), 0 0 0 1.5px rgba(220, 60, 60, 0.8);
+        }
+
+        .dread-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            filter: grayscale(25%) contrast(1.08) brightness(0.82);
+        }
+
+        .img-caption {
+            margin-top: 0.8rem;
+            font-size: 0.7rem;
+            font-family: monospace;
+            color: #aa5a5a;
+            letter-spacing: 2px;
+        }
+
+        .sigil-footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #943e3e;
+            border-top: 1px solid #441818;
+            padding-top: 1.8rem;
+            font-style: italic;
+        }
+
+        @keyframes pulseRed {
+            0% {
+                text-shadow: 0 0 2px #ff4444, 0 0 5px #aa0000;
+                opacity: 0.96;
+            }
+            50% {
+                text-shadow: 0 0 12px #ff1a1a, 0 0 22px #9b0000;
+                opacity: 1;
+                color: #ff4d4d;
+            }
+            100% {
+                text-shadow: 0 0 2px #ff4444, 0 0 5px #aa0000;
+                opacity: 0.96;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes blinkDots {
+            0%, 100% { opacity: 0.4; text-shadow: 0 0 3px red; }
+            50% { opacity: 0.9; text-shadow: 0 0 10px darkred; }
+        }
+
+        @media (max-width: 680px) {
+            body {
+                padding: 1.5rem 1rem 3rem 1rem;
+            }
+            .sacred-narrative p {
+                font-size: 1rem;
+            }
+            .dread-gap {
+                height: 20vh;
+                min-height: 140px;
+            }
+            .second-gap {
+                height: 28vh;
+                min-height: 180px;
+            }
+            .red-horror {
+                font-size: 1.05rem;
+                line-height: 1.5;
+            }
+            .terror-realm {
+                padding: 1.3rem 0.5rem;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .dread-gap {
+                height: 32vh;
+            }
+            .second-gap {
+                height: 38vh;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="dread-void">
+    <!-- ========= 正常文本区域：完整的创世纪叙事（整合用户补充的所有经文） ========= -->
+    <div class="sacred-narrative">
+        <p>太初，上帝创造了天地。那时，大地空虚混沌，还没有成形，黑暗笼罩着深渊，上帝的灵运行在水面上。上帝说：“要有光！”就有了光。上帝看光是好的，就把光和暗分开，称光为昼，称暗为夜。晚上过去，早晨到来，这是第一天。</p>
+        <p>上帝说：“水与水之间要有穹苍，把水分开。” 果然如此。上帝开辟了穹苍，用穹苍将水上下分开。上帝称穹苍为天空。晚上过去，早晨到来，这是第二天。</p>
+        <p>上帝说：“天空下面的水要聚在一处，使干地露出来。”果然如此。 上帝称干地为陆地，称水汇聚的地方为海洋。上帝看了，感到满意。 上帝说：“陆地要长出植物——各类结种子的菜蔬和结果子的树木，果子内都有籽。”果然如此， 陆地长出了植物——各类结种子的菜蔬和结果子的树木，果子内都有籽。上帝看了，感到满意。 晚上过去，早晨到来，这是第三天。</p>
+        <p>上帝说：“天空要有光体，以区分昼夜，作记号，定节令，计算年日， 发光普照大地。”果然如此。  上帝造了两个大光体，较大的管白昼，较小的管黑夜，又造了星辰。 上帝把这些光体摆列在天空，让它们发光普照大地， 管理昼夜，分开明暗。上帝看了，感到满意。 晚上过去，早晨到来，这是第四天。</p>
+        <p>上帝说：“水中要充满各种动物，空中要有禽鸟飞翔。” 上帝就造了海中的大鱼等各类水族和各类禽鸟。上帝看了，感到满意。 上帝赐福给这一切生物，说：“水族要生养繁殖，充满海洋，禽鸟也要在地上多多地繁殖。” 晚上过去，早晨到来，这是第五天。 上帝说：“大地要繁衍各类动物——各类的牲畜、爬虫和野兽。”果然如此。 上帝造了各类的野兽、牲畜和爬虫。上帝看了，感到满意。</p>
+        <p>上帝说：“我们要照着我们的形象，按着我们的样子造人，让他们管理海里的鱼、空中的鸟和地上的牲畜及一切爬虫。”</p>
+    </div>
+
+    <!-- 断裂省略号，暗示混沌缺失 -->
+    <div class="ellipsis-abyss">
+        … …
+    </div>
+    <div class="ellipsis-abyss small">
+        ……
+    </div>
+
+    <!-- 第一个巨大的间隔层 — 让读者下滑时产生“悬而未决”的恐惧准备 -->
+    <div class="dread-gap">
+        <div class="gap-whisper">✦ 下沉 ✦ 凝视深渊 ✦</div>
+    </div>
+
+    <div style="text-align: right; margin-bottom: 1.2rem; opacity:0.3; font-size:0.65rem; letter-spacing:1px;">
+        ⸻ 虚空的记忆 ⸻
+    </div>
+
+    <!-- 第二个更长的间隔区域 — 用户滑动至此开始不安，预感恐怖将至 -->
+    <div class="second-gap">
+        <div class="gap-whisper" style="opacity:0.5; border-left: 1px solid #6a2020; border-right:1px solid #6a2020; padding: 0 1rem;">
+            无声回响 · 造物之律动
+        </div>
+    </div>
+
+    <!-- 再增加一层透明度裂缝 (加深滑动的心理恐惧) -->
+    <div style="height: 10vh; min-height: 70px; display: flex; align-items: center; justify-content: center;">
+        <span style="font-size: 0.6rem; color:#4a2a2a;">▼ 滑向不可逆的箴言 ▼</span>
+    </div>
+
+    <!-- ========= 红色恐怖区域 — 大量“人是上帝创造的” 令人战栗，产生文字恐惧 ========= -->
+    <div class="terror-realm">
+        <div class="red-horror horror-flood" id="redTorrent">
+            <!-- 动态生成无穷无尽的红色咒语 -->
+        </div>
+    </div>
+
+    <!-- 紧接图片——耶稣神圣而可怖的形象，强化“造物主”令人敬畏的命运感 -->
+    <div class="image-section">
+        <div class="image-frame">
+            <img class="dread-img" 
+                 src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Christ_Consolator.jpg" 
+                 alt="耶稣基督 · 凝视受造之物的命运"
+                 onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Christ_Pantocrator_Deesis_mosaic_Hagia_Sophia.jpg/600px-Christ_Pantocrator_Deesis_mosaic_Hagia_Sophia.jpg';"
+                 loading="lazy">
+        </div>
+        <div class="img-caption">
+            ✝️ 祂的目光通晓一切被造之物 ✝️
+        </div>
+    </div>
+
+    <!-- 结尾的红色轻微低语，延续恐惧 -->
+    <div class="sigil-footer">
+        「 人是上帝创造的 」 契约 · 无法抹去的烙印
+    </div>
+</div>
+
+<script>
+    // 营造恐怖密集的红色文字区域: 制造足以淹没理智的重复，保证滑动至此感到强烈恐惧压迫。
+    (function() {
+        const targetContainer = document.getElementById('redTorrent');
+        if (!targetContainer) return;
+
+        const corePhrase = "人是上帝创造的";
+        let terrorText = '';
+        
+        let repeatCount = 360;
+        if (window.innerWidth < 700) {
+            repeatCount = 260;
+        }
+        
+        for (let i = 0; i < repeatCount; i++) {
+            terrorText += corePhrase;
+            if ((i + 1) % 4 === 0) {
+                terrorText += '<br>';
+            } else {
+                terrorText += ' ';
+            }
+        }
+        
+        terrorText += '<br><span style="font-size:1.4rem; filter:blur(0.3px);">⚠️ 无可逃脱 ⚠️</span><br>';
+        for (let i = 0; i < 150; i++) {
+            terrorText += corePhrase;
+            if (i % 12 === 7) terrorText += ' ';
+        }
+        terrorText += '<br>';
+        for (let i = 0; i < 220; i++) {
+            terrorText += corePhrase;
+            if ((i+1) % 30 === 0) terrorText += '<br>';
+            else terrorText += ' ';
+        }
+        
+        terrorText += '<br><span style="display:block; margin: 12px 0; letter-spacing:2px;">✝️✝️ 人是上帝创造的 ✝️✝️</span>';
+        for (let i = 0; i < 88; i++) {
+            terrorText += corePhrase + ' ';
+        }
+        
+        targetContainer.innerHTML = terrorText;
+        
+        const terrorZone = document.querySelector('.terror-realm');
+        if (terrorZone) {
+            terrorZone.addEventListener('mouseenter', () => {
+                terrorZone.style.boxShadow = '0 0 45px rgba(220, 0, 0, 0.5), inset 0 0 28px rgba(160,0,0,0.5)';
+                terrorZone.style.transition = '0.2s';
+            });
+            terrorZone.addEventListener('mouseleave', () => {
+                terrorZone.style.boxShadow = '0 0 30px rgba(255, 0, 0, 0.25), inset 0 0 25px rgba(100, 0, 0, 0.4)';
+            });
+        }
+    })();
+</script>
+</body>
+</html>
